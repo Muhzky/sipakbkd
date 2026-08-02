@@ -2,7 +2,7 @@
   <a href="https://laravel.com/">
     <img src="https://laravel.com/img/logomark.min.svg" alt="laravel logo" width="75" height="75">
   </a>
-  <a href="https://getstisla.com">
+  <a href="https://stisla.dev/">
     <img src="https://avatars2.githubusercontent.com/u/45754626?s=75&v=4" alt="Stisla logo" width="75" height="75">
   </a>
 </p>
