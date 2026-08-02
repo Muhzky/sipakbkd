@@ -85,7 +85,7 @@ Beberapa opsi mulai cepat tersedia:
     ```
 -   Selesai — Aplikasi dapat diakses di `http://localhost:8000`
 
-Baca [dokumentasi Laravel](https://laravel.com/docs) dan [dokumentasi Stisla](https://getstisla.com/docs) untuk informasi lebih lanjut.
+Baca [dokumentasi Laravel](https://laravel.com/docs) dan [dokumentasi Stisla](https://stisla.dev/docs/introduction) untuk informasi lebih lanjut.
 
 ## Akun Default
 
