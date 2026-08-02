@@ -18,9 +18,9 @@
 <br>
 
 <p align="center">
-  <a href="https://github.com/kholilullahhhh/rpph-aplikasi#quick-start">Mulai Cepat</a>
+  <a href="https://github.com/Muhzky/sipakbkd#quick-start">Mulai Cepat</a>
   •
-  <a href="https://github.com/kholilullahhhh/rpph-aplikasi/issues">Issue</a>
+  <a href="https://github.com/Muhzky/sipakbkd/issues">Issue</a>
 </p>
 
 <br>
@@ -106,8 +106,8 @@ Setelah menjalankan `php artisan migrate --seed`, berikut akun yang tersedia unt
 Terima kasih kepada proyek-proyek open-source yang menjadi dasar pengembangan aplikasi ini:
 
 -   [Laravel](https://laravel.com) — Framework PHP
--   [Stisla](https://getstisla.com) — Template Admin Bootstrap
--   [Spatie Laravel Permission](https://spatie.com/docs/laravel-permission) — Role & Permission Management
+-   [Stisla](https://stisla.dev) — Template Admin Bootstrap
+-   [Spatie Laravel Permission](https://spatie.be/docs/laravel-permission/v8/introduction) — Role & Permission Management
 -   [Barroyvdh Laravel DomPDF](https://github.com/barryvdh/laravel-dompdf) — PDF Generator
 -   [Bootstrap](https://getbootstrap.com) — CSS Framework
 -   [Chart.js](https://www.chartjs.org) — Chart Library
