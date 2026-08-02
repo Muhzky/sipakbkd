@@ -7,11 +7,11 @@
   </a>
 </p>
 
-<h1 align="center">BKD App</h1>
+<h1 align="center">Sipak BKD</h1>
 
 <span align="center">
 
-**BKD App** adalah Sistem Informasi Kenaikan Pangkat Berbasis Web yang dikembangkan untuk BKD Kabupaten Kepulauan Selayar. Sistem ini mendigitalisasi proses pengajuan kenaikan pangkat pegawai negeri sipil (PNS) mulai dari pengajuan, verifikasi administrasi, persetujuan pimpinan, hingga penerbitan Surat Keputusan (SK).
+**Sipak BKD** adalah Sistem Informasi Kenaikan Pangkat Berbasis Web yang dikembangkan untuk BKD Kabupaten Kepulauan Selayar. Sistem ini mendigitalisasi proses pengajuan kenaikan pangkat pegawai negeri sipil (PNS) mulai dari pengajuan, verifikasi administrasi, persetujuan pimpinan, hingga penerbitan Surat Keputusan (SK).
 
 </span>
 
