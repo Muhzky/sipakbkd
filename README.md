@@ -66,8 +66,8 @@ Beberapa opsi mulai cepat tersedia:
 
 -   Clone repositori:
     ```bash
-    git clone https://github.com/kholilullahhhh/rpph-aplikasi.git
-    cd rpph-aplikasi
+    git clone https://github.com/Muhzky/sipakbkd.git
+    cd sipakbkd
     ```
 -   Jalankan perintah berikut secara berurutan:
     ```bash
