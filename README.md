@@ -1,59 +1,118 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <a href="https://laravel.com/">
+    <img src="https://laravel.com/img/logomark.min.svg" alt="laravel logo" width="75" height="75">
+  </a>
+  <a href="https://getstisla.com">
+    <img src="https://avatars2.githubusercontent.com/u/45754626?s=75&v=4" alt="Stisla logo" width="75" height="75">
+  </a>
 </p>
 
-## About Laravel
+<h1 align="center">BKD App</h1>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<span align="center">
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**BKD App** adalah Sistem Informasi Kenaikan Pangkat Berbasis Web yang dikembangkan untuk BKD Kabupaten Kepulauan Selayar. Sistem ini mendigitalisasi proses pengajuan kenaikan pangkat pegawai negeri sipil (PNS) mulai dari pengajuan, verifikasi administrasi, persetujuan pimpinan, hingga penerbitan Surat Keputusan (SK).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+</span>
 
-## Learning Laravel
+<br>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+<p align="center">
+  <a href="https://github.com/kholilullahhhh/rpph-aplikasi#quick-start">Mulai Cepat</a>
+  •
+  <a href="https://github.com/kholilullahhhh/rpph-aplikasi/issues">Issue</a>
+</p>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<br>
 
-## Laravel Sponsors
+## Daftar Isi
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- [Daftar Isi](#daftar-isi)
+- [Fitur Utama](#fitur-utama)
+- [Teknologi yang Digunakan](#teknologi-yang-digunakan)
+- [Mulai Cepat](#mulai-cepat)
+- [Akun Default](#akun-default)
+- [Lisensi](#lisensi)
+- [Credits](#credits)
 
-### Premium Partners
+## Fitur Utama
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+-   **3 Peran Pengguna** — Pegawai, Admin BKD, dan Pimpinan dengan hak akses berbeda
+-   **Alur Pengajuan Kenaikan Pangkat** — Proses pengajuan dari pegawai hingga persetujuan pimpinan
+-   **Manajemen Dokumen** — Upload, unduh, dan perbaikan dokumen persyaratan (SK Pangkat, SKP, Ijazah, Dokumen Pendukung)
+-   **Generasi PDF Surat Keputusan (SK)** — Penerbitan SK otomatis menggunakan DomPDF dengan format F4 resmi
+-   **Sistem Notifikasi Real-time** — Pemberitahuan otomatis untuk setiap perubahan status pengajuan
+-   **Laporan & Export PDF** — Laporan filterable berdasarkan bulan, tahun, dan status
+-   **Dashboard Interaktif** — Statistik dan grafik bulanan menggunakan Chart.js
+-   **Manajemen Data Master** — CRUD untuk Pegawai, Jabatan, dan Pangkat
+-   **Autentikasi & Otorisasi** — Login/register dengan role-based access control (Spatie Permission)
+-   **UI Responsive** — Tampilan responsif dengan off-canvas sidebar untuk mobile
 
-## Contributing
+## Teknologi yang Digunakan
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+| Komponen | Teknologi |
+| --- | --- |
+| Backend | Laravel 12, PHP 8.2 |
+| Database | SQLite |
+| Frontend | Bootstrap 5.3, Chart.js, DataTables, Font Awesome |
+| Build Tool | Vite 7, Tailwind CSS 4 |
+| Autentikasi | Custom (Session-based) |
+| Otorisasi | Spatie Laravel Permission |
+| PDF Generator | Barroyvdh Laravel DomPDF |
 
-## Code of Conduct
+## Mulai Cepat
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Beberapa opsi mulai cepat tersedia:
 
-## Security Vulnerabilities
+-   Clone repositori:
+    ```bash
+    git clone https://github.com/kholilullahhhh/rpph-aplikasi.git
+    cd rpph-aplikasi
+    ```
+-   Jalankan perintah berikut secara berurutan:
+    ```bash
+    composer install
+    npm install
+    npm run build
+    cp .env.example .env
+    php artisan key:generate
+    php artisan migrate --seed
+    php artisan serve
+    ```
+-   Atau gunakan script setup otomatis:
+    ```bash
+    composer setup
+    ```
+-   Selesai — Aplikasi dapat diakses di `http://localhost:8000`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Baca [dokumentasi Laravel](https://laravel.com/docs) dan [dokumentasi Stisla](https://getstisla.com/docs) untuk informasi lebih lanjut.
 
-## License
+## Akun Default
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Setelah menjalankan `php artisan migrate --seed`, berikut akun yang tersedia untuk testing:
+
+| Role | Email | Password |
+| --- | --- | --- |
+| Admin BKD | admin@bkd.go.id | password |
+| Pimpinan | pimpinan@bkd.go.id | password |
+| Pegawai | pegawai@bkd.go.id | password |
+
+## Lisensi
+
+**BKD App** dilisensikan di bawah [Lisensi MIT](LICENSE)
+
+## Credits
+
+Terima kasih kepada proyek-proyek open-source yang menjadi dasar pengembangan aplikasi ini:
+
+-   [Laravel](https://laravel.com) — Framework PHP
+-   [Stisla](https://getstisla.com) — Template Admin Bootstrap
+-   [Spatie Laravel Permission](https://spatie.com/docs/laravel-permission) — Role & Permission Management
+-   [Barroyvdh Laravel DomPDF](https://github.com/barryvdh/laravel-dompdf) — PDF Generator
+-   [Bootstrap](https://getbootstrap.com) — CSS Framework
+-   [Chart.js](https://www.chartjs.org) — Chart Library
+-   [DataTables](https://datatables.net) — Table Plugin
+
+---
+
+Dibuat untuk BKD Kabupaten Kepulauan Selayar.
