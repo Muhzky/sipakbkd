@@ -16,6 +16,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/kebijakan-privasi', function () {
+    return view('pages.kebijakan-privasi');
+})->name('kebijakan-privasi');
+
+Route::get('/syarat-ketentuan', function () {
+    return view('pages.syarat-ketentuan');
+})->name('syarat-ketentuan');
+
+Route::get('/faq', function () {
+    return view('pages.faq');
+})->name('faq');
+
+Route::get('/hubungi-kami', function () {
+    return view('pages.hubungi-kami');
+})->name('hubungi-kami');
+
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login']);

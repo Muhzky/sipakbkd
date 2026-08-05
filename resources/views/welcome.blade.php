@@ -762,10 +762,10 @@
                 <div class="footer-col">
                     <h5>Legal & Bantuan</h5>
                     <ul class="footer-links">
-                        <li><a href="#">Kebijakan Privasi</a></li>
-                        <li><a href="#">Syarat & Ketentuan</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Hubungi Kami</a></li>
+                        <li><a href="{{ route('kebijakan-privasi') }}">Kebijakan Privasi</a></li>
+                        <li><a href="{{ route('syarat-ketentuan') }}">Syarat & Ketentuan</a></li>
+                        <li><a href="{{ route('faq') }}">FAQ</a></li>
+                        <li><a href="{{ route('hubungi-kami') }}">Hubungi Kami</a></li>
                     </ul>
                 </div>
 
