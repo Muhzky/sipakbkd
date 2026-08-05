@@ -1,7 +1,4 @@
-
-# Let me create the modified HTML with professional diagonal green shapes in the hero section
-
-modified_html = '''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -491,7 +488,9 @@ modified_html = '''<!DOCTYPE html>
         }
         .footer-links a:hover { color: var(--primary); transform: translateX(4px); }
         
-        .footer-contact-icon { color: var(--primary) !important; }
+        .footer-contact-list { list-style: none; padding: 0; margin: 0; }
+        .footer-contact-list li { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 12px; }
+        .footer-contact-icon { color: var(--primary) !important; flex-shrink: 0; margin-top: 3px; }
         
         .footer-socials { display: flex; gap: 12px; margin-top: 24px; }
         .social-icon {
@@ -741,10 +740,10 @@ modified_html = '''<!DOCTYPE html>
                     </a>
                     <p>Sistem Informasi Kenaikan Pangkat Pegawai. Portal resmi Badan Kepegawaian Daerah untuk percepatan layanan administrasi kepegawaian berbasis digital.</p>
                     <div class="footer-socials">
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                        <a href="https://www.instagram.com/bkpsdmkepulauanselayar/?hl=en" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/BKPSDMKepulauanSelayar/" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/@bkkpdkepulauanselayar8220/videos" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="mailto:bkppd@kepulauanselayarkab.go.id" class="social-icon"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
 
@@ -773,10 +772,10 @@ modified_html = '''<!DOCTYPE html>
                 <!-- Contact Column -->
                 <div class="footer-col">
                     <h5>Kontak BKD</h5>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt me-2 footer-contact-icon"></i> Jl. Jend. Ahmad Yani, Benteng Sel., Kec. Benteng, Kab. Kepulauan Selayar, Sulawesi Selatan</li>
-                        <li><i class="fas fa-phone me-2 footer-contact-icon"></i> (62) 414 21118</li>
-                        <li><i class="fas fa-envelope me-2 footer-contact-icon"></i> @bkd.kepulauanselayarkab.go.id</li>
+                    <ul class="footer-contact-list">
+                        <li><i class="fas fa-map-marker-alt footer-contact-icon"></i><span>Jl. Jend. Ahmad Yani, Benteng Sel., Kec. Benteng, Kab. Kepulauan Selayar, Sulawesi Selatan</span></li>
+                        <li><i class="fas fa-phone footer-contact-icon"></i><span>(62) 414 21118</span></li>
+                        <li><i class="fas fa-envelope footer-contact-icon"></i><span>bkppd@kepulauanselayarkab.go.id</span></li>
                     </ul>
                 </div>
             </div>
