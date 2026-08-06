@@ -6,14 +6,13 @@ use App\Models\Dokumen;
 use App\Models\Pegawai;
 use App\Models\Pengajuan;
 use App\Models\User;
-use App\Models\User;
 use App\Notifications\PengajuanBaru;
 use App\Notifications\PengajuanTerverifikasi;
+use App\Services\SupabaseStorage;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
-use Illuminate\Support\Facades\Storage;
 
 class PengajuanController extends Controller
 {
@@ -59,9 +58,12 @@ class PengajuanController extends Controller
         ]);
 
         $dokumenData = ['pengajuan_id' => $pengajuan->id];
+        $storage = new SupabaseStorage();
         foreach (['sk_pangkat', 'skp', 'ijazah', 'dokumen_pendukung'] as $field) {
             if ($request->hasFile($field)) {
-                $dokumenData[$field] = $request->file($field)->store('dokumen/' . $pengajuan->id, 'public');
+                $path = 'dokumen/' . $pengajuan->id . '/' . $field . '_' . time() . '.' . $request->file($field)->getClientOriginalExtension();
+                $storage->upload($path, $request->file($field));
+                $dokumenData[$field] = $path;
             }
         }
 
@@ -153,12 +155,15 @@ class PengajuanController extends Controller
             $dokumen = new Dokumen(['pengajuan_id' => $pengajuan->id]);
         }
 
+        $storage = new SupabaseStorage();
         foreach (['sk_pangkat', 'skp', 'ijazah', 'dokumen_pendukung'] as $field) {
             if ($request->hasFile($field)) {
-                if ($dokumen->$field && Storage::disk('public')->exists($dokumen->$field)) {
-                    Storage::disk('public')->delete($dokumen->$field);
+                if ($dokumen->$field) {
+                    $storage->delete($dokumen->$field);
                 }
-                $dokumen->$field = $request->file($field)->store('dokumen/' . $pengajuan->id, 'public');
+                $path = 'dokumen/' . $pengajuan->id . '/' . $field . '_' . time() . '.' . $request->file($field)->getClientOriginalExtension();
+                $storage->upload($path, $request->file($field));
+                $dokumen->$field = $path;
             }
         }
         $dokumen->save();
@@ -246,11 +251,18 @@ class PengajuanController extends Controller
         $dokumen = Dokumen::findOrFail($id);
         $file = $dokumen->$field;
 
-        if (!$file || !Storage::disk('public')->exists($file)) {
+        $storage = new SupabaseStorage();
+        if (!$file || !$storage->exists($file)) {
             return back()->with('error', 'Dokumen tidak ditemukan.');
         }
 
-        return Storage::disk('public')->download($file);
+        $content = $storage->download($file);
+        $fileName = basename($file);
+
+        return response($content, 200, [
+            'Content-Type' => mime_content_type($file) ?? 'application/octet-stream',
+            'Content-Disposition' => "attachment; filename=\"{$fileName}\"",
+        ]);
     }
 
     public function downloadSk(Pengajuan $pengajuan)

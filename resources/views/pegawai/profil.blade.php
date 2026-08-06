@@ -12,7 +12,7 @@
         <div class="card">
             <div class="card-body text-center">
                 @if($user->foto)
-                    <img src="{{ asset('storage/' . $user->foto) }}" class="avatar-xl mb-3">
+                    <img src="{{ supabase_storage_url($user->foto) }}" class="avatar-xl mb-3">
                 @else
                     <div class="avatar-xl bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="font-size: 40px;">
                         <i class="fas fa-user"></i>

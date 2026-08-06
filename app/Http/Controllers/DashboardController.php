@@ -49,7 +49,7 @@ class DashboardController extends Controller
         $disetujui = Pengajuan::where('status', 'disetujui')->count();
         $ditolak = Pengajuan::where('status', 'ditolak')->count();
 
-        $chartData = Pengajuan::selectRaw('strftime("%m", tanggal) as bulan, count(*) as total')
+        $chartData = Pengajuan::selectRaw("EXTRACT(MONTH FROM tanggal) as bulan, count(*) as total")
             ->whereYear('tanggal', date('Y'))
             ->groupBy('bulan')
             ->orderBy('bulan')
@@ -58,7 +58,7 @@ class DashboardController extends Controller
         $labels = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
         $values = [];
         for ($i = 1; $i <= 12; $i++) {
-            $values[] = $chartData->get(str_pad($i, 2, '0', STR_PAD_LEFT), 0);
+            $values[] = $chartData->get($i, 0);
         }
 
         return view('dashboard.admin', compact(
@@ -75,7 +75,7 @@ class DashboardController extends Controller
         $disetujui = Pengajuan::where('status', 'disetujui')->count();
         $ditolak = Pengajuan::where('status', 'ditolak')->count();
 
-        $chartData = Pengajuan::selectRaw('strftime("%m", tanggal) as bulan, count(*) as total')
+        $chartData = Pengajuan::selectRaw("EXTRACT(MONTH FROM tanggal) as bulan, count(*) as total")
             ->whereYear('tanggal', date('Y'))
             ->groupBy('bulan')
             ->orderBy('bulan')
@@ -84,7 +84,7 @@ class DashboardController extends Controller
         $labels = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
         $values = [];
         for ($i = 1; $i <= 12; $i++) {
-            $values[] = $chartData->get(str_pad($i, 2, '0', STR_PAD_LEFT), 0);
+            $values[] = $chartData->get($i, 0);
         }
 
         return view('dashboard.pimpinan', compact(

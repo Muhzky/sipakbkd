@@ -536,7 +536,7 @@
                 <div class="sidebar-user-info">
                     <div class="sidebar-user-avatar">
                         @if(Auth::user()->foto)
-                            <img src="{{ asset('storage/' . Auth::user()->foto) }}" class="avatar-sm">
+                            <img src="{{ supabase_storage_url(Auth::user()->foto) }}" class="avatar-sm">
                         @else
                             <div class="avatar-sm bg-primary text-white d-flex align-items-center justify-content-center">
                                 <i class="fas fa-user"></i>
@@ -641,7 +641,7 @@
                                             </div>
                                         </div>
                                         @if(Auth::user()->foto)
-                                            <img src="{{ asset('storage/' . Auth::user()->foto) }}" class="avatar-sm" style="margin-left: 10px;">
+                                            <img src="{{ supabase_storage_url(Auth::user()->foto) }}" class="avatar-sm" style="margin-left: 10px;">
                                         @else
                                             <div class="avatar-sm bg-primary text-white d-flex align-items-center justify-content-center" style="margin-left: 10px;">
                                                 <i class="fas fa-user"></i>

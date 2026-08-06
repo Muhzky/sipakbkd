@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Pegawai;
 use App\Models\User;
+use App\Services\SupabaseStorage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class ProfilController extends Controller
 {
@@ -45,11 +45,13 @@ class ProfilController extends Controller
         $user->update($request->only(['nama', 'tempat_lahir', 'tgl_lahir', 'jenis_kelamin']));
 
         if ($request->hasFile('foto')) {
+            $storage = new SupabaseStorage();
             if ($user->foto) {
-                Storage::delete('public/' . $user->foto);
+                $storage->delete($user->foto);
             }
-            $foto = $request->file('foto')->store('foto-profil', 'public');
-            $user->update(['foto' => $foto]);
+            $path = 'foto-profil/' . $user->id . '_' . time() . '.' . $request->file('foto')->getClientOriginalExtension();
+            $storage->upload($path, $request->file('foto'));
+            $user->update(['foto' => $path]);
         }
 
         $pegawai->update($request->only(['unit_kerja', 'no_hp', 'jabatan_id', 'pangkat_id']));
