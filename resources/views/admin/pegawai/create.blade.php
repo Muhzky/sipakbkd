@@ -78,13 +78,19 @@
                             </select>
                         </div>
                         <div class="col-md-4 mb-3">
+                            <label class="form-label">Eselon</label>
+                            <input type="text" name="eselon" class="form-control" value="{{ old('eselon') }}" placeholder="Contoh: 3A, 4A">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
                             <label class="form-label">Unit Kerja</label>
                             <input type="text" name="unit_kerja" class="form-control" value="{{ old('unit_kerja') }}">
                         </div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Nomor Telepon</label>
-                        <input type="text" name="no_hp" class="form-control" value="{{ old('no_hp') }}">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Nomor Telepon</label>
+                            <input type="text" name="no_hp" class="form-control" value="{{ old('no_hp') }}">
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-save me-2"></i>Simpan

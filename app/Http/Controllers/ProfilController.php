@@ -39,6 +39,7 @@ class ProfilController extends Controller
             'no_hp' => 'nullable|max:20',
             'jabatan_id' => 'nullable|exists:jabatans,id',
             'pangkat_id' => 'nullable|exists:pangkats,id',
+            'eselon' => 'nullable|max:10',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
@@ -54,7 +55,7 @@ class ProfilController extends Controller
             $user->update(['foto' => $path]);
         }
 
-        $pegawai->update($request->only(['unit_kerja', 'no_hp', 'jabatan_id', 'pangkat_id']));
+        $pegawai->update($request->only(['unit_kerja', 'no_hp', 'jabatan_id', 'pangkat_id', 'eselon']));
 
         return back()->with('success', 'Profil berhasil diperbarui.');
     }

@@ -73,6 +73,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/pengajuan', [PengajuanController::class, 'index'])->name('pengajuan.index');
         Route::get('/pengajuan/{pengajuan}/verifikasi', [PengajuanController::class, 'verifikasi'])->name('pengajuan.verifikasi');
         Route::put('/pengajuan/{pengajuan}/status', [PengajuanController::class, 'updateStatus'])->name('pengajuan.update-status');
+        Route::get('/pengajuan/{pengajuan}/download-sk', [PengajuanController::class, 'downloadSk'])->name('pengajuan.download-sk');
 
         Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
         Route::get('/laporan/preview', [LaporanController::class, 'preview'])->name('laporan.preview');

@@ -12,10 +12,28 @@ use Illuminate\Support\Facades\Hash;
 
 class PegawaiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $pegawais = Pegawai::with('user', 'jabatan', 'pangkat')->paginate(15);
-        return view('admin.pegawai.index', compact('pegawais'));
+        $search = $request->input('search', '');
+
+        $pegawais = Pegawai::select('pegawais.*')
+            ->with('user', 'jabatan', 'pangkat')
+            ->leftJoin('pangkats', 'pegawais.pangkat_id', '=', 'pangkats.id')
+            ->leftJoin('users', 'pegawais.user_id', '=', 'users.id')
+            ->when($search, function ($query, $search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('users.nama', 'ilike', "%{$search}%")
+                      ->orWhere('users.nip', 'ilike', "%{$search}%")
+                      ->orWhere('users.email', 'ilike', "%{$search}%")
+                      ->orWhere('pegawais.eselon', 'ilike', "%{$search}%");
+                });
+            })
+            ->orderByRaw('COALESCE(pangkats.id, 0) DESC')
+            ->orderByRaw("CASE WHEN eselon IS NULL OR eselon = '' THEN 0 ELSE regexp_replace(eselon, '[^0-9]', '', 'g')::integer END DESC")
+            ->paginate(15)
+            ->withQueryString();
+
+        return view('admin.pegawai.index', compact('pegawais', 'search'));
     }
 
     public function create()
@@ -37,6 +55,7 @@ class PegawaiController extends Controller
             'jenis_kelamin' => 'nullable|in:L,P',
             'jabatan_id' => 'nullable|exists:jabatans,id',
             'pangkat_id' => 'nullable|exists:pangkats,id',
+            'eselon' => 'nullable|max:10',
             'unit_kerja' => 'nullable|max:255',
             'no_hp' => 'nullable|max:20',
         ]);
@@ -57,6 +76,7 @@ class PegawaiController extends Controller
             'user_id' => $user->id,
             'jabatan_id' => $validated['jabatan_id'] ?? null,
             'pangkat_id' => $validated['pangkat_id'] ?? null,
+            'eselon' => $validated['eselon'] ?? null,
             'unit_kerja' => $validated['unit_kerja'] ?? null,
             'no_hp' => $validated['no_hp'] ?? null,
         ]);
@@ -84,6 +104,7 @@ class PegawaiController extends Controller
             'jenis_kelamin' => 'nullable|in:L,P',
             'jabatan_id' => 'nullable|exists:jabatans,id',
             'pangkat_id' => 'nullable|exists:pangkats,id',
+            'eselon' => 'nullable|max:10',
             'unit_kerja' => 'nullable|max:255',
             'no_hp' => 'nullable|max:20',
         ]);
@@ -106,6 +127,7 @@ class PegawaiController extends Controller
         $pegawai->update([
             'jabatan_id' => $validated['jabatan_id'] ?? null,
             'pangkat_id' => $validated['pangkat_id'] ?? null,
+            'eselon' => $validated['eselon'] ?? null,
             'unit_kerja' => $validated['unit_kerja'] ?? null,
             'no_hp' => $validated['no_hp'] ?? null,
         ]);

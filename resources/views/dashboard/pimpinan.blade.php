@@ -37,9 +37,9 @@
     </div>
     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="statistic-card bg-info-stat">
-            <div class="statistic-icon"><i class="fas fa-file-alt"></i></div>
-            <div class="statistic-label">Total Pengajuan</div>
-            <div class="statistic-value">{{ $totalPengajuan }}</div>
+            <div class="statistic-icon"><i class="fas fa-user-tie"></i></div>
+            <div class="statistic-label">Total Pimpinan</div>
+            <div class="statistic-value">{{ $totalPimpinan }}</div>
         </div>
     </div>
     <div class="col-lg-3 col-md-6 col-sm-6 col-12">

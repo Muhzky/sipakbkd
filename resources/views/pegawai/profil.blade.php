@@ -84,7 +84,7 @@
                         </div>
                     </div>
                     <div class="row mb-4">
-                        <div class="col-md-6 mb-3 mb-md-0">
+                        <div class="col-md-4 mb-3 mb-md-0">
                             <label class="form-label">Jabatan</label>
                             <select name="jabatan_id" class="form-select">
                                 <option value="">-- Pilih --</option>
@@ -93,7 +93,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4 mb-3 mb-md-0">
                             <label class="form-label">Pangkat</label>
                             <select name="pangkat_id" class="form-select">
                                 <option value="">-- Pilih --</option>
@@ -101,6 +101,10 @@
                                     <option value="{{ $p->id }}" {{ old('pangkat_id', $pegawai->pangkat_id) == $p->id ? 'selected' : '' }}>{{ $p->golongan }} - {{ $p->nama_pangkat }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Eselon</label>
+                            <input type="text" name="eselon" class="form-control" value="{{ old('eselon', $pegawai->eselon) }}" placeholder="Contoh: 3A, 4A">
                         </div>
                     </div>
 

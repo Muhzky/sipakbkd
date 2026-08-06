@@ -72,11 +72,13 @@ class ImportPegawaiCommand extends Command
 
             $jabatanId = $this->resolveJabatan($data['Nama Jabatan'] ?? null);
             $pangkatId = $this->resolvePangkat($data['Golongan'] ?? null);
+            $eselon = trim((string) ($data['Eselon'] ?? ''));
 
             Pegawai::create([
                 'user_id' => $user->id,
                 'jabatan_id' => $jabatanId,
                 'pangkat_id' => $pangkatId,
+                'eselon' => $eselon ?: null,
                 'unit_kerja' => null,
                 'no_hp' => null,
             ]);

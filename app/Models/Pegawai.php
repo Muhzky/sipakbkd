@@ -12,6 +12,7 @@ class Pegawai extends Model
         'user_id',
         'jabatan_id',
         'pangkat_id',
+        'eselon',
         'unit_kerja',
         'no_hp',
     ];

@@ -19,6 +19,19 @@
                 </div>
             </div>
             <div class="card-body">
+                <form method="GET" action="{{ route('admin.pegawai.index') }}" class="mb-3">
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control" placeholder="Cari nama, NIP, email, atau eselon..." value="{{ $search }}">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search"></i> Cari
+                        </button>
+                        @if($search)
+                            <a href="{{ route('admin.pegawai.index') }}" class="btn btn-secondary">
+                                <i class="fas fa-times"></i> Reset
+                            </a>
+                        @endif
+                    </div>
+                </form>
                 <div class="table-responsive">
                     <table class="table table-striped" id="tablePegawai">
                         <thead>
@@ -29,18 +42,20 @@
                                 <th>Email</th>
                                 <th>Jabatan</th>
                                 <th>Pangkat</th>
+                                <th>Eselon</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse($pegawais as $p)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ ($pegawais->currentPage() - 1) * $pegawais->perPage() + $loop->iteration }}</td>
                                 <td>{{ $p->user->nip }}</td>
                                 <td>{{ $p->user->nama }}</td>
                                 <td>{{ $p->user->email }}</td>
                                 <td>{{ $p->jabatan->nama_jabatan ?? '-' }}</td>
                                 <td>{{ $p->pangkat ? $p->pangkat->golongan . ' - ' . $p->pangkat->nama_pangkat : '-' }}</td>
+                                <td>{{ $p->eselon ?? '-' }}</td>
                                 <td>
                                     <a href="{{ route('admin.pegawai.edit', $p) }}" class="btn btn-sm btn-warning text-white">
                                         <i class="fas fa-edit"></i>
@@ -55,7 +70,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="7" class="text-center">Tidak ada data</td>
+                                <td colspan="8" class="text-center">Tidak ada data</td>
                             </tr>
                             @endforelse
                         </tbody>
@@ -72,8 +87,6 @@
 
 @push('scripts')
 <script>
-    $(document).ready(function() {
-        $('#tablePegawai').DataTable();
-    });
+    // Pagination menggunakan Laravel server-side
 </script>
 @endpush

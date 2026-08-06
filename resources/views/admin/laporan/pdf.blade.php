@@ -124,6 +124,7 @@
                 <th>Nomor Pengajuan</th>
                 <th>Nama Pegawai</th>
                 <th>NIP</th>
+                <th>Eselon</th>
                 <th>Tanggal</th>
                 <th>Pangkat Lama</th>
                 <th>Pangkat Baru</th>
@@ -137,6 +138,7 @@
                 <td>{{ $p->nomor_pengajuan }}</td>
                 <td>{{ $p->pegawai->user->nama }}</td>
                 <td>{{ $p->pegawai->user->nip }}</td>
+                <td class="text-center">{{ $p->pegawai->eselon ?? '-' }}</td>
                 <td class="text-center">{{ $p->tanggal->format('d/m/Y') }}</td>
                 <td>{{ $p->pangkat_lama }}</td>
                 <td>{{ $p->pangkat_baru }}</td>
@@ -144,13 +146,13 @@
             </tr>
             @empty
             <tr>
-                <td colspan="8" class="text-center">Tidak ada data</td>
+                <td colspan="9" class="text-center">Tidak ada data</td>
             </tr>
             @endforelse
         </tbody>
         <tfoot>
             <tr>
-                <th colspan="7" class="text-right">Total Pengajuan :</th>
+                <th colspan="8" class="text-right">Total Pengajuan :</th>
                 <th class="text-center">{{ $pengajuans->count() }}</th>
             </tr>
         </tfoot>
