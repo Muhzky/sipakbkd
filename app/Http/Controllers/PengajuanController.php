@@ -284,10 +284,11 @@ class PengajuanController extends Controller
 
         $pengajuan->load('pegawai.user', 'pegawai.jabatan', 'pegawai.pangkat');
 
-        $sekretaris = User::where('email', 'sekretaris@bkd.go.id')->first();
-        $kabid = User::where('email', 'kabid@bkd.go.id')->first();
+        $sekretaris = User::where('email', 'aleksanderstmm@bkd.go.id')->first();
+        $kabid = User::where('email', 'anditriyantimusdalifahsemm@bkd.go.id')->first();
+        $kepalaBkd = User::where('email', 'anditriyantimusdalifahsemm@bkd.go.id')->first();
 
-        $pdf = Pdf::loadView('admin.pengajuan.sk', compact('pengajuan', 'sekretaris', 'kabid'))
+        $pdf = Pdf::loadView('admin.pengajuan.sk', compact('pengajuan', 'sekretaris', 'kabid', 'kepalaBkd'))
             ->setPaper(array(0, 0, 609.448, 935.433), 'portrait');
         return $pdf->download('SK-' . $pengajuan->nomor_pengajuan . '.pdf');
     }

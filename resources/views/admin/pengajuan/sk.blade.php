@@ -186,7 +186,7 @@
                     </tr>
                 </table>
                 <div style="margin-top: 8px; text-align: justify;">
-                    Terhitung mulai tanggal {{ $pengajuan->tanggal->format('d F Y') }} dinaikkan pangkatnya menjadi {{ $pengajuan->pangkat_baru }} golongan ruang ... dengan masa kerja golongan ... tahun ... bulan, dan diberikan gaji pokok sebesar Rp ... ditambah dengan penghasilan lain berdasarkan ketentuan peraturan perundang-undangan yang berlaku.
+                    Terhitung mulai tanggal {{ $pengajuan->tanggal->format('d F Y') }} dinaikkan pangkatnya menjadi {{ $pengajuan->pangkat_baru }}.
                 </div>
             </td>
         </tr>
@@ -214,8 +214,8 @@
         <div style="margin-top: 10px; text-align: center;">
             Kepala Badan Kepegawaian dan Pengembangan<br>Sumber Daya Manusia<br>Kabupaten Kepulauan Selayar
             <br><br><br><br>
-            <span style="text-decoration: underline; display: inline-block; min-width: 150px;">..................................................</span><br>
-            NIP. ........................................
+            <span style="text-decoration: underline; display: inline-block; min-width: 150px;">{{ $kepalaBkd->nama ?? '..................................................' }}</span><br>
+            NIP. {{ $kepalaBkd->nip ?? '........................................' }}
         </div>
     </div>
     <div class="clearfix"></div>
