@@ -7,6 +7,8 @@ use App\Models\Pegawai;
 use App\Models\Pengajuan;
 use App\Models\User;
 use App\Notifications\PengajuanBaru;
+use App\Notifications\PengajuanDiverifikasi;
+use App\Notifications\PengajuanDitolakOperator;
 use App\Notifications\PengajuanTerverifikasi;
 use App\Services\SupabaseStorage;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -237,6 +239,13 @@ class PengajuanController extends Controller
         if ($validated['status'] === 'terverifikasi') {
             $pimpinan = User::role('Pimpinan')->get();
             Notification::send($pimpinan, new PengajuanTerverifikasi($pengajuan));
+
+            $pengajuan->pegawai->user->notify(new PengajuanDiverifikasi($pengajuan));
+        }
+
+        if ($validated['status'] === 'ditolak_operator') {
+            $pengajuan->load('pegawai.user');
+            $pengajuan->pegawai->user->notify(new PengajuanDitolakOperator($pengajuan));
         }
 
         $message = $validated['status'] === 'terverifikasi'

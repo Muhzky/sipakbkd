@@ -36,13 +36,6 @@
         </div>
     </div>
     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-        <div class="statistic-card bg-info-stat">
-            <div class="statistic-icon"><i class="fas fa-user-tie"></i></div>
-            <div class="statistic-label">Total Pimpinan</div>
-            <div class="statistic-value">{{ $totalPimpinan }}</div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="statistic-card bg-warning-stat">
             <div class="statistic-icon"><i class="fas fa-clock"></i></div>
             <div class="statistic-label">Menunggu Persetujuan</div>
@@ -50,20 +43,17 @@
         </div>
     </div>
     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-        <div class="statistic-card bg-success-stat">
-            <div class="statistic-icon"><i class="fas fa-check-circle"></i></div>
-            <div class="statistic-label">Disetujui</div>
-            <div class="statistic-value">{{ $disetujui }}</div>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="statistic-card bg-danger-stat">
             <div class="statistic-icon"><i class="fas fa-times-circle"></i></div>
             <div class="statistic-label">Ditolak</div>
             <div class="statistic-value">{{ $ditolak }}</div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+        <div class="statistic-card bg-success-stat">
+            <div class="statistic-icon"><i class="fas fa-check-circle"></i></div>
+            <div class="statistic-label">Disetujui</div>
+            <div class="statistic-value">{{ $disetujui }}</div>
         </div>
     </div>
 </div>

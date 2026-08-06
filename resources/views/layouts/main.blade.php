@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Sistem Kenaikan Pangkat BKD')</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
@@ -574,7 +575,7 @@
 
                 @php $unreadCount = Auth::user()->unreadNotifications->count(); @endphp
                 <div class="d-flex align-items-center ms-auto">
-                    <div class="dropdown me-2 me-lg-3">
+                    <div class="dropdown me-3 me-lg-4">
                         <a class="position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: var(--text); padding: 4px;">
                             <i class="fas fa-bell" style="font-size: 18px;"></i>
                             @if($unreadCount > 0)
@@ -601,6 +602,10 @@
                                                 <i class="fas fa-file-alt" style="color: var(--info); font-size: 15px;"></i>
                                             @elseif(\Illuminate\Support\Str::contains($notification->type, 'PengajuanTerverifikasi'))
                                                 <i class="fas fa-check-circle" style="color: #3498db; font-size: 15px;"></i>
+                                            @elseif(\Illuminate\Support\Str::contains($notification->type, 'PengajuanDiverifikasi'))
+                                                <i class="fas fa-check-double" style="color: #3498db; font-size: 15px;"></i>
+                                            @elseif(\Illuminate\Support\Str::contains($notification->type, 'PengajuanDitolakOperator'))
+                                                <i class="fas fa-undo" style="color: var(--warning, #f39c12); font-size: 15px;"></i>
                                             @elseif(\Illuminate\Support\Str::contains($notification->type, 'StatusPersetujuan'))
                                                 @if(($notification->data['status'] ?? '') === 'disetujui')
                                                     <i class="fas fa-check-circle" style="color: var(--primary); font-size: 15px;"></i>
@@ -621,9 +626,7 @@
                                     Tidak ada notifikasi baru
                                 </div>
                             @endforelse
-                            <a href="{{ route('notifications.index') }}" class="dropdown-item text-center py-3" style="font-size: 13px; color: var(--primary); font-weight: 500; border-top: 1px solid var(--border);">
-                                Lihat semua notifikasi
-                            </a>
+                            <a href="{{ route('notifications.index') }}" class="dropdown-item text-center py-3" style="font-size: 13px; color: var(--primary); font-weight: 500; border-top: 1px solid var(--border); --bs-dropdown-link-hover-bg: transparent; --bs-dropdown-link-active-bg: transparent;">Lihat semua notifikasi</a>
                         </div>
                     </div>
 

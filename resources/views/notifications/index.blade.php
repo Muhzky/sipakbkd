@@ -41,6 +41,14 @@
                                 <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: #eaf7ef;">
                                     <i class="fas fa-check-circle" style="color: #3498db;"></i>
                                 </div>
+                            @elseif(\Illuminate\Support\Str::contains($notification->type, 'PengajuanDiverifikasi'))
+                                <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: #e8f4fd;">
+                                    <i class="fas fa-check-double" style="color: #3498db;"></i>
+                                </div>
+                            @elseif(\Illuminate\Support\Str::contains($notification->type, 'PengajuanDitolakOperator'))
+                                <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: #fef3e2;">
+                                    <i class="fas fa-undo" style="color: #f39c12;"></i>
+                                </div>
                             @elseif(\Illuminate\Support\Str::contains($notification->type, 'StatusPersetujuan'))
                                 @if(($notification->data['status'] ?? '') === 'disetujui')
                                     <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background: #eaf7ef;">

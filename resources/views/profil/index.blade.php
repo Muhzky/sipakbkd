@@ -111,6 +111,12 @@
                             </select>
                         </div>
                     </div>
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <label class="form-label">Eselon</label>
+                            <input type="text" name="eselon" class="form-control" value="{{ old('eselon', $pegawai->eselon) }}" placeholder="Contoh: 3A, 4A, 00">
+                        </div>
+                    </div>
 
                     <hr class="my-4">
 

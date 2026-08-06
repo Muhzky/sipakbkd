@@ -41,7 +41,6 @@ class DashboardController extends Controller
     private function adminDashboard()
     {
         $totalPegawai = \App\Models\User::role('Pegawai')->count();
-        $totalPimpinan = \App\Models\User::role('Pimpinan')->count();
         $totalPengajuan = Pengajuan::count();
         $menunggu = Pengajuan::whereIn('status', ['menunggu', 'dokumen_tidak_lengkap'])->count();
         $menungguVerifikasi = Pengajuan::where('status', 'menunggu_verifikasi')->count();
@@ -63,7 +62,7 @@ class DashboardController extends Controller
         }
 
         return view('dashboard.admin', compact(
-            'totalPegawai', 'totalPimpinan', 'totalPengajuan', 'menunggu', 'menungguVerifikasi',
+            'totalPegawai', 'totalPengajuan', 'menunggu', 'menungguVerifikasi',
             'terverifikasi', 'ditolakOperator', 'disetujui', 'ditolak', 'labels', 'values'
         ));
     }
@@ -71,7 +70,6 @@ class DashboardController extends Controller
     private function pimpinanDashboard()
     {
         $totalPegawai = \App\Models\User::role('Pegawai')->count();
-        $totalPimpinan = \App\Models\User::role('Pimpinan')->count();
         $totalPengajuan = Pengajuan::count();
         $menungguPersetujuan = Pengajuan::where('status', 'terverifikasi')->count();
         $disetujui = Pengajuan::where('status', 'disetujui')->count();
@@ -90,7 +88,7 @@ class DashboardController extends Controller
         }
 
         return view('dashboard.pimpinan', compact(
-            'totalPegawai', 'totalPimpinan', 'totalPengajuan', 'menungguPersetujuan', 'disetujui', 'ditolak',
+            'totalPegawai', 'totalPengajuan', 'menungguPersetujuan', 'disetujui', 'ditolak',
             'labels', 'values'
         ));
     }
