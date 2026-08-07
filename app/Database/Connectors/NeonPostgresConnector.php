@@ -10,9 +10,15 @@ class NeonPostgresConnector extends PostgresConnector
     {
         $dsn = parent::getDsn($config);
 
-        if (! empty($config['neon_endpoint_id'])) {
-            $endpointId = rawurlencode($config['neon_endpoint_id']);
-            $dsn .= ";options=-c%20endpoint%3D{$endpointId}";
+        $host = $config['host'] ?? '';
+        $endpointId = $config['neon_endpoint_id'] ?? '';
+
+        if (empty($endpointId) && preg_match('/^(ep-[a-z0-9-]+)-pooler/', $host, $m)) {
+            $endpointId = $m[1];
+        }
+
+        if (! empty($endpointId)) {
+            $dsn .= ";options=-c endpoint={$endpointId}";
         }
 
         return $dsn;
