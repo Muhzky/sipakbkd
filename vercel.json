@@ -25,7 +25,7 @@
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
-        "DB_PORT": "6543",
+        "DB_PORT": "5432",
         "DB_SSLMODE": "require"
     }
 }
