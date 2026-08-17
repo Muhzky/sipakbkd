@@ -11,10 +11,20 @@ use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\Pimpinan\PengajuanController as PimpinanPengajuanController;
 use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/storage/{path}', function (string $path) {
+    $path = ltrim($path, '/');
+    $disk = Storage::disk('public');
+    if (!$disk->exists($path)) {
+        abort(404);
+    }
+    return $disk->response($path);
+})->where('path', '.*');
 
 Route::get('/kebijakan-privasi', function () {
     return view('pages.kebijakan-privasi');
