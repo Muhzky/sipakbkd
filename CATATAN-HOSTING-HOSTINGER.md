@@ -252,3 +252,36 @@ curl -I https://domainanda.com/build/manifest.json   # harus 200 (aset vite ada)
 - [ ] Reset opcache setelah update file PHP
 - [ ] Hapus semua file diagnostik / script sementara dari server
 - [ ] SSL aktif (hPanel → Security → SSL) + paksa HTTPS
+
+---
+
+## 13. DomPDF: PDF SK & Laporan Tidak Bisa Diunduh (Penting)
+
+**Gejala:** tombol download SK / laporan PDF tidak menghasilkan file (error di
+belakang layar, mis. "Cannot resolve public path" / 500).
+
+**Penyebab:** restrukturisasi membuat folder `public` TIDAK ADA di root app (isinya
+sudah dipindah ke `public_html`). DomPDF mencoba `realpath(base_path('public'))` di
+`vendor/barryvdh/laravel-dompdf/src/ServiceProvider.php`, hasilnya `false` →
+`RuntimeException: Cannot resolve public path`.
+
+**Solusi (2 langkah):**
+
+1. Di `config/dompdf.php`, ubah `public_path` menjadi env-driven (fallback lokal tetap jalan):
+   ```php
+   'public_path' => env('DOMPDF_PUBLIC_PATH', base_path('public')),
+   ```
+2. Di `.env` server, tambahkan path webroot asli:
+   ```
+   DOMPDF_PUBLIC_PATH=/home/uXXXXXXX/domains/domainanda.com/public_html
+   ```
+
+Setelah itu **reset opcache** (bagian 9) dan tes:
+- `/admin/laporan/pdf` → harus `Content-Type: application/pdf`
+- `/admin/pengajuan/{id}/download-sk` → harus `Content-Type: application/pdf`
+
+**Catatan:** ekstensi PHP yang dibutuhkan DomPDF (`dom`, `mbstring`, `gd`, `xml`,
+`imagick`) sudah tersedia di Hostinger; bukan itu masalahnya.
+
+**Mistake umum:** fokus pada ekstensi/`APP_DEBUG` padahal akar masalahnya adalah
+`public` yang tidak ada di root app setelah restrukturisasi.
