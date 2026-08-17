@@ -32,6 +32,10 @@ Route::get('/hubungi-kami', function () {
     return view('pages.hubungi-kami');
 })->name('hubungi-kami');
 
+Route::get('/panduan', function () {
+    return view('pages.panduan');
+})->name('panduan');
+
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login']);

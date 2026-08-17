@@ -248,6 +248,7 @@
                         <li><a href="{{ url('/') }}">Beranda</a></li>
                         <li><a href="{{ url('/#alur') }}">Alur Pengajuan</a></li>
                         <li><a href="{{ url('/#layanan') }}">Layanan & Fitur</a></li>
+                        <li><a href="{{ route('panduan') }}">Panduan Pengguna</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
