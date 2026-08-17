@@ -2,6 +2,24 @@
 
 @section('title', 'Data Pegawai')
 
+@push('styles')
+<style>
+    #tablePegawai thead th {
+        background-color: var(--primary);
+        color: white;
+        border: 1px solid #ccc;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-align: center;
+        white-space: nowrap;
+    }
+    #tablePegawai tbody td {
+        border: 1px solid #ccc;
+    }
+</style>
+@endpush
+
 @section('content')
 <div class="section-header">
     <h1>Data Pegawai</h1>
@@ -57,15 +75,17 @@
                                 <td>{{ $p->pangkat ? $p->pangkat->golongan . ' - ' . $p->pangkat->nama_pangkat : '-' }}</td>
                                 <td>{{ $p->eselon ?? '-' }}</td>
                                 <td>
-                                    <a href="{{ route('admin.pegawai.edit', $p) }}" class="btn btn-sm btn-warning text-white">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <form action="{{ route('admin.pegawai.destroy', $p) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus?')">
-                                        @csrf @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a href="{{ route('admin.pegawai.edit', $p) }}" class="btn btn-sm btn-warning text-white">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <form action="{{ route('admin.pegawai.destroy', $p) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus?')">
+                                            @csrf @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                             @empty

@@ -27,6 +27,16 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        /* ===== Border tabel data (abu-abu) ===== */
+        .table th, .table td,
+        table.dataTable th, table.dataTable td,
+        .table-pengajuan th, .table-pengajuan td,
+        .table-riwayat th, .table-riwayat td,
+        .table-laporan th, .table-laporan td,
+        thead th, thead td, tbody th, tbody td, tfoot th, tfoot td {
+            border: 1px solid #ccc;
+        }
+
         body {
             font-family: 'Poppins', 'Nunito', 'Segoe UI', Tahoma, sans-serif;
             background-color: #FAFBFC;

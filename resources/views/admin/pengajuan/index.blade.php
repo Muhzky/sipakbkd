@@ -11,7 +11,7 @@
     .table-pengajuan thead th {
         background-color: var(--primary);
         color: white;
-        border: 1px solid var(--primary-dark);
+        border: 1px solid #ccc;
         padding: 10px 12px;
         font-weight: 600;
         text-transform: uppercase;
@@ -20,7 +20,7 @@
         white-space: nowrap;
     }
     .table-pengajuan tbody td {
-        border: 1px solid #dee2e6;
+        border: 1px solid #ccc;
         padding: 8px 12px;
         font-size: 13px;
         vertical-align: middle;

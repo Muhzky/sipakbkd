@@ -11,7 +11,7 @@
     .table-laporan thead th {
         background-color: var(--primary);
         color: white;
-        border: 1px solid var(--primary-dark);
+        border: 1px solid #ccc;
         padding: 10px 12px;
         font-weight: 600;
         text-transform: uppercase;
@@ -20,7 +20,7 @@
         white-space: nowrap;
     }
     .table-laporan tbody td {
-        border: 1px solid #dee2e6;
+        border: 1px solid #ccc;
         padding: 8px 12px;
         font-size: 13px;
         vertical-align: middle;
@@ -34,7 +34,7 @@
     .table-laporan tfoot th {
         background-color: var(--mint);
         color: var(--primary-dark);
-        border: 1px solid var(--primary-dark);
+        border: 1px solid #ccc;
         padding: 10px 12px;
         font-weight: 700;
         font-size: 13px;

@@ -40,7 +40,7 @@ class DashboardController extends Controller
 
     private function adminDashboard()
     {
-        $totalPegawai = \App\Models\User::role('Pegawai')->count();
+        $totalPegawai = Pegawai::whereDoesntHave('user.roles', fn ($q) => $q->where('name', 'Admin BKD'))->count();
         $totalPengajuan = Pengajuan::count();
         $menunggu = Pengajuan::whereIn('status', ['menunggu', 'dokumen_tidak_lengkap'])->count();
         $menungguVerifikasi = Pengajuan::where('status', 'menunggu_verifikasi')->count();
@@ -69,7 +69,7 @@ class DashboardController extends Controller
 
     private function pimpinanDashboard()
     {
-        $totalPegawai = \App\Models\User::role('Pegawai')->count();
+        $totalPegawai = Pegawai::whereDoesntHave('user.roles', fn ($q) => $q->where('name', 'Admin BKD'))->count();
         $totalPengajuan = Pengajuan::count();
         $menungguPersetujuan = Pengajuan::where('status', 'terverifikasi')->count();
         $disetujui = Pengajuan::where('status', 'disetujui')->count();

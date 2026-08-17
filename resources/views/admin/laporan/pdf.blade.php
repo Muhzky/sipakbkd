@@ -60,7 +60,7 @@
         thead th {
             background-color: #12A150;
             color: white;
-            border: 1px solid #0B5C33;
+            border: 1px solid #ccc;
             padding: 6px 8px;
             text-align: center;
             font-weight: bold;
@@ -79,7 +79,7 @@
         tfoot th {
             background-color: #EAF7EF;
             color: #0B5C33;
-            border: 1px solid #0B5C33;
+            border: 1px solid #ccc;
             padding: 5px 8px;
             font-weight: bold;
             font-size: 10pt;

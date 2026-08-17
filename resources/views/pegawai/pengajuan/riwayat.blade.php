@@ -11,7 +11,7 @@
     .table-riwayat thead th {
         background-color: var(--primary);
         color: white;
-        border: 1px solid var(--primary-dark);
+        border: 1px solid #ccc;
         padding: 10px 12px;
         font-weight: 600;
         text-transform: uppercase;
@@ -20,7 +20,7 @@
         white-space: nowrap;
     }
     .table-riwayat tbody td {
-        border: 1px solid #dee2e6;
+        border: 1px solid #ccc;
         padding: 8px 12px;
         font-size: 13px;
         vertical-align: middle;
@@ -101,19 +101,21 @@
                                     </span>
                                 </td>
                                 <td class="col-aksi">
-                                    <a href="{{ route('pegawai.pengajuan.show', $p) }}" class="btn btn-sm btn-info text-white" title="Lihat Detail">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    @if(in_array($p->status, ['dokumen_tidak_lengkap', 'ditolak_operator']))
-                                        <a href="{{ route('pegawai.pengajuan.edit-dokumen', $p) }}" class="btn btn-sm btn-warning text-white" title="Upload Ulang Dokumen">
-                                            <i class="fas fa-upload"></i>
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a href="{{ route('pegawai.pengajuan.show', $p) }}" class="btn btn-sm btn-info text-white" title="Lihat Detail">
+                                            <i class="fas fa-eye"></i>
                                         </a>
-                                    @endif
-                                    @if($p->status == 'disetujui')
-                                        <a href="{{ route('pegawai.pengajuan.download-sk', $p) }}" class="btn btn-sm btn-success text-white" title="Download SK">
-                                            <i class="fas fa-file-pdf"></i>
-                                        </a>
-                                    @endif
+                                        @if(in_array($p->status, ['dokumen_tidak_lengkap', 'ditolak_operator']))
+                                            <a href="{{ route('pegawai.pengajuan.edit-dokumen', $p) }}" class="btn btn-sm btn-warning text-white" title="Upload Ulang Dokumen">
+                                                <i class="fas fa-upload"></i>
+                                            </a>
+                                        @endif
+                                        @if($p->status == 'disetujui')
+                                            <a href="{{ route('pegawai.pengajuan.download-sk', $p) }}" class="btn btn-sm btn-success text-white" title="Download SK">
+                                                <i class="fas fa-file-pdf"></i>
+                                            </a>
+                                        @endif
+                                    </div>
                                 </td>
                             </tr>
                             @empty

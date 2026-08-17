@@ -78,10 +78,10 @@
                 <div class="alert alert-success mt-3">
                     <i class="fas fa-check-circle me-2"></i>
                     Pengajuan telah disetujui.
-                    <a href="{{ route('pegawai.pengajuan.download-sk', $pengajuan) }}" class="btn btn-sm btn-success ms-3">
-                        <i class="fas fa-file-pdf"></i> Unduh SK
-                    </a>
                 </div>
+                <a href="{{ route('pegawai.pengajuan.download-sk', $pengajuan) }}" class="btn btn-success mb-3">
+                    <i class="fas fa-file-pdf"></i> Unduh SK
+                </a>
                 @endif
             </div>
         </div>

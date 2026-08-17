@@ -17,12 +17,27 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->validate([
+        $validated = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
+            'role' => 'required|in:Pegawai,Admin BKD,Pimpinan',
         ]);
 
+        $credentials = [
+            'email' => $validated['email'],
+            'password' => $validated['password'],
+        ];
+
         if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+
+            if (!$user->hasRole($validated['role'])) {
+                Auth::logout();
+                return back()->withErrors([
+                    'email' => 'Akun ini tidak memiliki akses sebagai ' . $validated['role'] . '.',
+                ])->onlyInput('email');
+            }
+
             $request->session()->regenerate();
             return redirect()->intended(route('dashboard'));
         }

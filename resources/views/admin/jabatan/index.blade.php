@@ -2,6 +2,27 @@
 
 @section('title', 'Data Jabatan')
 
+@push('styles')
+<style>
+    .card-body .table thead th {
+        background-color: var(--primary);
+        color: white;
+        border: 1px solid #ccc;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-align: center;
+        white-space: nowrap;
+    }
+    .card-body .table tbody td {
+        border: 1px solid #ccc;
+    }
+    .card-body .table tbody td:last-child {
+        text-align: center;
+    }
+</style>
+@endpush
+
 @section('content')
 <div class="section-header">
     <h1>Data Jabatan</h1>
@@ -34,15 +55,17 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $j->nama_jabatan }}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-warning text-white" data-bs-toggle="modal" data-bs-target="#modalEdit{{ $j->id }}">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <form action="{{ route('admin.jabatan.destroy', $j) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus?')">
-                                        @csrf @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">
-                                            <i class="fas fa-trash"></i>
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <button class="btn btn-sm btn-warning text-white" data-bs-toggle="modal" data-bs-target="#modalEdit{{ $j->id }}">
+                                            <i class="fas fa-edit"></i>
                                         </button>
-                                    </form>
+                                        <form action="{{ route('admin.jabatan.destroy', $j) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus?')">
+                                            @csrf @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                             @empty

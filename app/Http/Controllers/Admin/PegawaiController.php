@@ -20,16 +20,19 @@ class PegawaiController extends Controller
             ->with('user', 'jabatan', 'pangkat')
             ->leftJoin('pangkats', 'pegawais.pangkat_id', '=', 'pangkats.id')
             ->leftJoin('users', 'pegawais.user_id', '=', 'users.id')
+            ->whereDoesntHave('user.roles', fn ($q) => $q->where('name', 'Admin BKD'))
             ->when($search, function ($query, $search) {
                 $query->where(function ($q) use ($search) {
-                    $q->where('users.nama', 'ilike', "%{$search}%")
-                      ->orWhere('users.nip', 'ilike', "%{$search}%")
-                      ->orWhere('users.email', 'ilike', "%{$search}%")
-                      ->orWhere('pegawais.eselon', 'ilike', "%{$search}%");
+                    $q->where('users.nama', 'like', "%{$search}%")
+                      ->orWhere('users.nip', 'like', "%{$search}%")
+                      ->orWhere('users.email', 'like', "%{$search}%")
+                      ->orWhere('pegawais.eselon', 'like', "%{$search}%");
                 });
             })
             ->orderByRaw('COALESCE(pangkats.id, 0) DESC')
-            ->orderByRaw("CASE WHEN eselon IS NULL OR eselon = '' THEN 0 ELSE regexp_replace(eselon, '[^0-9]', '', 'g')::integer END DESC")
+            ->orderByRaw("CASE WHEN eselon IS NULL OR eselon = '' OR eselon = '00' THEN 1 ELSE 0 END,
+                           CASE WHEN eselon IS NULL OR eselon = '' OR eselon = '00' THEN 0 ELSE CAST(REGEXP_REPLACE(eselon, '[^0-9]', '') AS UNSIGNED) END,
+                           CASE WHEN eselon IS NULL OR eselon = '' OR eselon = '00' THEN '' ELSE REGEXP_REPLACE(eselon, '[^A-Za-z]', '') END")
             ->paginate(15)
             ->withQueryString();
 
