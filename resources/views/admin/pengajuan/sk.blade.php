@@ -14,6 +14,7 @@
             line-height: 1.2;
             margin: 0;
             padding: 0;
+            text-align: justify;
         }
         .text-center { text-align: center; }
         .bold { font-weight: bold; }
@@ -61,15 +62,11 @@
         .tp-label { width: 170px; }
         .tp-colon { width: 15px; text-align: center; }
         
-        .ttd-main {
-            float: right;
-            width: 250px;
+        .ttd-wrapper {
+            width: 100%;
             margin-top: 15px;
         }
-        .ttd-main table {
-            width: 100%;
-        }
-        .ttd-main td {
+        .ttd-wrapper td {
             padding: 1px 0;
         }
         
@@ -198,44 +195,48 @@
     </table>
     
     <!-- TTD MAIN -->
-    <div class="ttd-main">
-        <table>
-            <tr>
-                <td style="width: 70px;">Ditetapkan di</td>
-                <td style="width: 10px;">:</td>
-                <td>Benteng</td>
-            </tr>
-            <tr>
-                <td>Pada tanggal</td>
-                <td>:</td>
-                <td>{{ date('d F Y') }}</td>
-            </tr>
-        </table>
-        <div style="margin-top: 10px; text-align: center;">
-            Kepala Badan Kepegawaian dan Pengembangan<br>Sumber Daya Manusia<br>Kabupaten Kepulauan Selayar
-            <br><br><br><br>
-            <span style="text-decoration: underline; display: inline-block; min-width: 150px;">{{ $kepalaBkd->nama ?? '..................................................' }}</span><br>
-            NIP. {{ $kepalaBkd->nip ?? '........................................' }}
-        </div>
-    </div>
-    <div class="clearfix"></div>
+    <table class="ttd-wrapper">
+        <tr>
+            <td style="width: 50%;"></td>
+            <td style="width: 50%;">
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="width: 85px;">Ditetapkan di</td>
+                        <td style="width: 10px;">:</td>
+                        <td>Benteng</td>
+                    </tr>
+                    <tr>
+                        <td>Pada tanggal</td>
+                        <td>:</td>
+                        <td>{{ date('d F Y') }}</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 10px; text-align: center;">
+                    Kepala Badan Kepegawaian dan Pengembangan<br>Sumber Daya Manusia<br>Kabupaten Kepulauan Selayar
+                    <br><br><br><br>
+                    <span style="text-decoration: underline; display: inline-block; min-width: 150px;">{{ $kepalaBkd->nama ?? '..................................................' }}</span><br>
+                    NIP. {{ $kepalaBkd->nip ?? '........................................' }}
+                </div>
+            </td>
+        </tr>
+    </table>
     
     <!-- TTD FOOTER -->
     <div class="ttd-footer">
-        <div style="margin-bottom: 10px;">
+        <div style="margin-bottom: 10px; text-align: left;">
             Untuk petikan yang sah<br>
             Sesuai dengan aslinya,
         </div>
         
-        <table style="width: 100%; text-align: center;">
+        <table style="width: 100%;">
             <tr>
-                <td style="width: 50%; vertical-align: top;">
+                <td style="width: 50%; vertical-align: top; text-align: center;">
                     Sekretaris,
                     <br><br><br><br>
                     <span style="text-decoration: underline; display: inline-block; min-width: 150px;">{{ $sekretaris->nama ?? '..................................................' }}</span><br>
                     NIP. {{ $sekretaris->nip ?? '........................................' }}
                 </td>
-                <td style="width: 50%; vertical-align: top;">
+                <td style="width: 50%; vertical-align: top; text-align: center;">
                     Kepala Bidang,
                     <br><br><br><br>
                     <span style="text-decoration: underline; display: inline-block; min-width: 150px;">{{ $kabid->nama ?? '..................................................' }}</span><br>
