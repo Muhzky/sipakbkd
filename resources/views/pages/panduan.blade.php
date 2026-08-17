@@ -366,12 +366,12 @@
                         <li><a href="{{ url('/') }}">Beranda</a></li>
                         <li><a href="{{ url('/#alur') }}">Alur Pengajuan</a></li>
                         <li><a href="{{ url('/#layanan') }}">Layanan & Fitur</a></li>
+                          <li><a href="{{ route('panduan') }}" style="color: var(--primary); font-weight: 600;">Panduan Pengguna</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h5>Legal & Bantuan</h5>
                     <ul class="footer-links">
-                        <li><a href="{{ route('panduan') }}" style="color: var(--primary); font-weight: 600;">Panduan Pengguna</a></li>
                         <li><a href="{{ route('kebijakan-privasi') }}">Kebijakan Privasi</a></li>
                         <li><a href="{{ route('syarat-ketentuan') }}">Syarat & Ketentuan</a></li>
                         <li><a href="{{ route('faq') }}">FAQ</a></li>
