@@ -35,11 +35,4 @@ return [
         ],
     ],
 
-    'supabase' => [
-        'url' => env('SUPABASE_URL'),
-        'key' => env('SUPABASE_KEY'),
-        'service_role_key' => env('SUPABASE_SERVICE_ROLE_KEY', env('SUPABASE_KEY')),
-        'storage_bucket' => env('SUPABASE_STORAGE_BUCKET', 'avatars'),
-    ],
-
 ];
