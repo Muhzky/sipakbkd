@@ -291,6 +291,18 @@ class PengajuanController extends Controller
         return $pdf->download('SK-' . $pengajuan->nomor_pengajuan . '.pdf');
     }
 
+    public function destroy(Pengajuan $pengajuan)
+    {
+        if ($pengajuan->dokumen) {
+            Storage::disk('public')->deleteDirectory('dokumen/' . $pengajuan->id);
+            $pengajuan->dokumen->delete();
+        }
+
+        $pengajuan->delete();
+
+        return redirect()->route('admin.pengajuan.index')->with('success', 'Pengajuan berhasil dihapus.');
+    }
+
     private function authorizeView(Pengajuan $pengajuan)
     {
         $user = Auth::user();

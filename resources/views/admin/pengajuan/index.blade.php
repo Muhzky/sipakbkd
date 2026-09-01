@@ -39,7 +39,7 @@
     .col-tanggal { width: 100px; text-align: center; }
     .col-pangkat { min-width: 150px; }
     .col-status { width: 160px; text-align: center; }
-    .col-aksi { width: 80px; text-align: center; }
+    .col-aksi { width: 110px; text-align: center; }
 
     .badge-menunggu, .badge-dokumen_tidak_lengkap { background-color: #ffc107; color: #000; }
     .badge-menunggu_verifikasi, .badge-terverifikasi { background-color: #17a2b8; }
@@ -116,45 +116,53 @@
                                     </span>
                                 </td>
                                 <td class="col-aksi">
-                                    @switch($p->status)
-                                        @case('menunggu')
-                                            <a href="{{ route('admin.pengajuan.verifikasi', $p) }}" class="btn btn-sm btn-warning text-white" title="Pemeriksaan Dokumen">
-                                                <i class="fas fa-search"></i>
-                                            </a>
-                                            @break
-                                        @case('dokumen_tidak_lengkap')
-                                            <a href="{{ route('admin.pengajuan.verifikasi', $p) }}" class="btn btn-sm btn-warning text-white" title="Periksa Dokumen">
-                                                <i class="fas fa-search"></i>
-                                            </a>
-                                            @break
-                                        @case('ditolak_operator')
-                                            <a href="{{ route('admin.pengajuan.verifikasi', $p) }}" class="btn btn-sm btn-warning text-white" title="Periksa Dokumen">
-                                                <i class="fas fa-search"></i>
-                                            </a>
-                                            @break
-                                        @case('menunggu_verifikasi')
-                                            <a href="{{ route('admin.pengajuan.verifikasi', $p) }}" class="btn btn-sm btn-info text-white" title="Verifikasi">
-                                                <i class="fas fa-check-circle"></i>
-                                            </a>
-                                            @break
-                                        @case('terverifikasi')
-                                            <span class="text-muted" title="Menunggu Persetujuan Pimpinan">
-                                                <i class="fas fa-hourglass-half"></i>
-                                            </span>
-                                            @break
-                                        @case('disetujui')
-                                            <a href="{{ route('admin.pengajuan.download-sk', $p) }}" class="btn btn-sm btn-success text-white" title="Download SK">
-                                                <i class="fas fa-file-pdf"></i>
-                                            </a>
-                                            @break
-                                        @case('ditolak')
-                                            <span class="text-muted" title="Pengajuan Ditolak">
-                                                <i class="fas fa-times-circle"></i>
-                                            </span>
-                                            @break
-                                        @default
-                                            <span class="text-muted">-</span>
-                                    @endswitch
+                                    <div class="d-flex justify-content-center gap-2">
+                                        @switch($p->status)
+                                            @case('menunggu')
+                                                <a href="{{ route('admin.pengajuan.verifikasi', $p) }}" class="btn btn-sm btn-warning text-white" title="Pemeriksaan Dokumen">
+                                                    <i class="fas fa-search"></i>
+                                                </a>
+                                                @break
+                                            @case('dokumen_tidak_lengkap')
+                                                <a href="{{ route('admin.pengajuan.verifikasi', $p) }}" class="btn btn-sm btn-warning text-white" title="Periksa Dokumen">
+                                                    <i class="fas fa-search"></i>
+                                                </a>
+                                                @break
+                                            @case('ditolak_operator')
+                                                <a href="{{ route('admin.pengajuan.verifikasi', $p) }}" class="btn btn-sm btn-warning text-white" title="Periksa Dokumen">
+                                                    <i class="fas fa-search"></i>
+                                                </a>
+                                                @break
+                                            @case('menunggu_verifikasi')
+                                                <a href="{{ route('admin.pengajuan.verifikasi', $p) }}" class="btn btn-sm btn-info text-white" title="Verifikasi">
+                                                    <i class="fas fa-check-circle"></i>
+                                                </a>
+                                                @break
+                                            @case('terverifikasi')
+                                                <span class="text-muted" title="Menunggu Persetujuan Pimpinan">
+                                                    <i class="fas fa-hourglass-half"></i>
+                                                </span>
+                                                @break
+                                            @case('disetujui')
+                                                <a href="{{ route('admin.pengajuan.download-sk', $p) }}" class="btn btn-sm btn-success text-white" title="Download SK">
+                                                    <i class="fas fa-file-pdf"></i>
+                                                </a>
+                                                @break
+                                            @case('ditolak')
+                                                <span class="text-muted" title="Pengajuan Ditolak">
+                                                    <i class="fas fa-times-circle"></i>
+                                                </span>
+                                                @break
+                                            @default
+                                                <span class="text-muted">-</span>
+                                        @endswitch
+                                        <form action="{{ route('admin.pengajuan.destroy', $p) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus pengajuan ini?')">
+                                            @csrf @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger" title="Hapus">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                             @empty
