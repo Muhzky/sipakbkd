@@ -37,7 +37,7 @@
     <div class="col-12 col-md-8">
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <span>Edit Profil</span>
+                <span>Profil Saya</span>
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('profil') }}" enctype="multipart/form-data">
@@ -49,25 +49,25 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Nama Lengkap</label>
-                            <input type="text" name="nama" class="form-control" value="{{ old('nama', $user->nama) }}" required>
+                            <input type="text" class="form-control" value="{{ $user->nama }}" disabled>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Jenis Kelamin</label>
-                            <select name="jenis_kelamin" class="form-select">
+                            <select class="form-select" disabled>
                                 <option value="">-- Pilih --</option>
-                                <option value="L" {{ old('jenis_kelamin', $user->jenis_kelamin) == 'L' ? 'selected' : '' }}>Laki-laki</option>
-                                <option value="P" {{ old('jenis_kelamin', $user->jenis_kelamin) == 'P' ? 'selected' : '' }}>Perempuan</option>
+                                <option value="L" {{ $user->jenis_kelamin == 'L' ? 'selected' : '' }}>Laki-laki</option>
+                                <option value="P" {{ $user->jenis_kelamin == 'P' ? 'selected' : '' }}>Perempuan</option>
                             </select>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Tempat Lahir</label>
-                            <input type="text" name="tempat_lahir" class="form-control" value="{{ old('tempat_lahir', $user->tempat_lahir) }}">
+                            <input type="text" class="form-control" value="{{ $user->tempat_lahir }}" disabled>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Tanggal Lahir</label>
-                            <input type="date" name="tgl_lahir" class="form-control" value="{{ old('tgl_lahir', $user->tgl_lahir ? $user->tgl_lahir->format('Y-m-d') : '') }}">
+                            <input type="date" class="form-control" value="{{ $user->tgl_lahir ? $user->tgl_lahir->format('Y-m-d') : '' }}" disabled>
                         </div>
                     </div>
                     <div class="mb-4">
@@ -88,25 +88,25 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Unit Kerja</label>
-                            <input type="text" name="unit_kerja" class="form-control" value="{{ old('unit_kerja', $pegawai->unit_kerja) }}">
+                            <input type="text" class="form-control" value="{{ $pegawai->unit_kerja }}" disabled>
                         </div>
                     </div>
                     <div class="row mb-4">
                         <div class="col-md-6 mb-3 mb-md-0">
                             <label class="form-label">Jabatan</label>
-                            <select name="jabatan_id" class="form-select">
+                            <select class="form-select" disabled>
                                 <option value="">-- Pilih --</option>
                                 @foreach($jabatans as $j)
-                                    <option value="{{ $j->id }}" {{ old('jabatan_id', $pegawai->jabatan_id) == $j->id ? 'selected' : '' }}>{{ $j->nama_jabatan }}</option>
+                                    <option value="{{ $j->id }}" {{ $pegawai->jabatan_id == $j->id ? 'selected' : '' }}>{{ $j->nama_jabatan }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Pangkat</label>
-                            <select name="pangkat_id" class="form-select">
+                            <select class="form-select" disabled>
                                 <option value="">-- Pilih --</option>
                                 @foreach($pangkats as $p)
-                                    <option value="{{ $p->id }}" {{ old('pangkat_id', $pegawai->pangkat_id) == $p->id ? 'selected' : '' }}>{{ $p->golongan }} - {{ $p->nama_pangkat }}</option>
+                                    <option value="{{ $p->id }}" {{ $pegawai->pangkat_id == $p->id ? 'selected' : '' }}>{{ $p->golongan }} - {{ $p->nama_pangkat }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -114,7 +114,7 @@
                     <div class="row mb-4">
                         <div class="col-md-6 mb-3 mb-md-0">
                             <label class="form-label">Eselon</label>
-                            <input type="text" name="eselon" class="form-control" value="{{ old('eselon', $pegawai->eselon) }}" placeholder="Contoh: 3A, 4A, 00">
+                            <input type="text" class="form-control" value="{{ $pegawai->eselon }}" disabled>
                         </div>
                     </div>
 
