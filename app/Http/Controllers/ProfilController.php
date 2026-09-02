@@ -29,11 +29,32 @@ class ProfilController extends Controller
     {
         $user = Auth::user();
         $pegawai = $user->pegawai;
+        $isAdmin = $user->hasRole('Admin BKD');
 
-        $request->validate([
-            'no_hp' => 'nullable|max:20',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-        ]);
+        if ($isAdmin) {
+            $request->validate([
+                'nama' => 'required|max:255',
+                'tempat_lahir' => 'nullable|max:255',
+                'tgl_lahir' => 'nullable|date',
+                'jenis_kelamin' => 'nullable|in:L,P',
+                'unit_kerja' => 'nullable|max:255',
+                'no_hp' => 'nullable|max:20',
+                'jabatan_id' => 'nullable|exists:jabatans,id',
+                'pangkat_id' => 'nullable|exists:pangkats,id',
+                'eselon' => 'nullable|max:10',
+                'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            ]);
+
+            $user->update($request->only(['nama', 'tempat_lahir', 'tgl_lahir', 'jenis_kelamin']));
+            $pegawai->update($request->only(['unit_kerja', 'no_hp', 'jabatan_id', 'pangkat_id', 'eselon']));
+        } else {
+            $request->validate([
+                'no_hp' => 'nullable|max:20',
+                'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            ]);
+
+            $pegawai->update($request->only(['no_hp']));
+        }
 
         if ($request->hasFile('foto')) {
             if ($user->foto) {
@@ -46,8 +67,6 @@ class ProfilController extends Controller
             );
             $user->update(['foto' => $path]);
         }
-
-        $pegawai->update($request->only(['no_hp']));
 
         return back()->with('success', 'Profil berhasil diperbarui.');
     }
